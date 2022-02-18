@@ -54,30 +54,59 @@ let conteudoGulliver = `<html>
    </body>
 </html>`
 
-//Limpando as tags do conteúdo Gulliver
-let conteudoClean = conteudoGulliver.replaceAll("<br>", '')
-  .replaceAll("<head>", '')
-  .replaceAll("</head>", '')
-  .replaceAll("<title>", '')
-  .replaceAll("</title>", '')
-  .replaceAll("</b>", '')
-  .replaceAll("<body>", '')
-  .replaceAll("</body>", '')
-  .replaceAll("<b>->", '')
-  .replaceAll("<html>", '')
-  .replaceAll("</html>", '')
-console.log(conteudoClean)
+function getHTML() {
 
-//1 - Nome das cidades avaliadas
-let buscarCidades = conteudoClean.split("*")
-console.table(buscarCidades)
-let cidadesAvaliadas = `${buscarCidades[1]}, ${buscarCidades[3]} e ${buscarCidades[5]}`
-console.log(cidadesAvaliadas)
-alert(`Os nomes das cidades avaliadas são: ${cidadesAvaliadas}.`)
+  //Limpando as tags do conteúdo Gulliver
+  let conteudoClean = conteudoGulliver.replaceAll("<br>", '')
+    .replaceAll("<head>", '')
+    .replaceAll("</head>", '')
+    .replaceAll("<title>", '')
+    .replaceAll("</title>", '')
+    .replaceAll("</b>", '')
+    .replaceAll("<body>", '')
+    .replaceAll("</body>", '')
+    .replaceAll("<b>->", '')
+    .replaceAll("<html>", '')
+    .replaceAll("</html>", '')
+  console.log(conteudoClean)
+
+  //1 - Nome das cidades avaliadas
+  let buscarCidades = conteudoClean.split("*")
+  console.table(buscarCidades)
+  let cidadesAvaliadas = `${buscarCidades[1]}, ${buscarCidades[3]} e ${buscarCidades[5]}`
+  console.log(cidadesAvaliadas)
+  alert(`Os nomes das cidades avaliadas são: ${cidadesAvaliadas}.`)
 
 
-//2 - O conteúdo do Roteiro A de cada cidade avaliada.
-let buscarRoteiroA = conteudoClean.split("#")
-console.table(buscarRoteiroA)
-let RoteirosA = `SÃO PAULO: ${buscarRoteiroA[1]}. LAS VEGAS: ${buscarRoteiroA[4]}. MOSCOU: ${buscarRoteiroA[7]}.`
-alert(RoteirosA)
+  //2 - O conteúdo do Roteiro A de cada cidade avaliada.
+  let buscarRoteiroA = conteudoClean.split("#")
+  console.table(buscarRoteiroA)
+  let RoteirosA = `SÃO PAULO: ${buscarRoteiroA[1]}. LAS VEGAS: ${buscarRoteiroA[4]}. MOSCOU: ${buscarRoteiroA[7]}.`
+  alert(RoteirosA)
+
+  //3 - Quantos locais são citados no roteiro A de cada cidade
+  let buscarQtdLocais = conteudoClean.split("\n")
+  console.table(buscarQtdLocais)
+
+  //Locais de SÃO PAULO
+  let qtdLocaisSP = buscarQtdLocais[11 + 2].split(";")
+  console.log(qtdLocaisSP)
+  console.log(qtdLocaisSP.length)
+
+  //Locais de LAS VEGAS
+  let qtdLocaisLV = buscarQtdLocais[29 + 2].split(";")
+  console.log(qtdLocaisLV)
+  console.log(qtdLocaisLV.length)
+
+  //Locais de MOSCOU
+  let qtdLocaisMC = buscarQtdLocais[43].split(";")
+  console.log(qtdLocaisMC)
+  console.log(qtdLocaisMC.length)
+  alert(`Na cidade de SÃO PAULO são citados ${qtdLocaisSP.length} locais. Em LAS VEGAS ${qtdLocaisLV.length} locais e em MOSCOU também são citados ${qtdLocaisMC.length} locais.`)
+
+
+  // //4 - O nome dos pontos turísticos localizados no bairro Centro da Cidade de São Paulo
+
+  // let buscarPtCentroSP = buscarRoteiroA[2].search("Centro")
+  // console.log(buscarPtCentroSP)
+}
