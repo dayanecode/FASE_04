@@ -56,40 +56,28 @@ let conteudoGulliver = `<html>
 
 //Limpando as tags do conteúdo Gulliver
 let conteudoClean = conteudoGulliver.replaceAll("<br>", '')
-    .replaceAll("<head>", '')
-    .replaceAll("</head>", '')
-    .replaceAll("<title>", '')
-    .replaceAll("</title>", '')
-    .replaceAll("</b>", '')
-    .replaceAll("<body>", '')
-    .replaceAll("</body>", '')
-    .replaceAll("<b>->", '')
-    .replaceAll("<html>", '')
-    .replaceAll("</html>", '')
+  .replaceAll("<head>", '')
+  .replaceAll("</head>", '')
+  .replaceAll("<title>", '')
+  .replaceAll("</title>", '')
+  .replaceAll("</b>", '')
+  .replaceAll("<body>", '')
+  .replaceAll("</body>", '')
+  .replaceAll("<b>->", '')
+  .replaceAll("<html>", '')
+  .replaceAll("</html>", '')
 console.log(conteudoClean)
 
-
-// //Extraindo os Roteiros A>
-// let roteirosA = conteudoClean.split("#Roteiro A")
-// console.log(roteirosA)
-// console.log(roteirosA.length) // retonar a qtde de arrays criados
-
-let posicaoRoteiroA = [conteudoClean.search("#Roteiro A")]
-console.log(posicaoRoteiroA)
-
-let posicaoRoteiroB = conteudoClean.search("#Roteiro B")
-console.log(posicaoRoteiroB)
+//1 - Nome das cidades avaliadas
+let buscarCidades = conteudoClean.split("*")
+console.table(buscarCidades)
+let cidadesAvaliadas = `${buscarCidades[1]}, ${buscarCidades[3]} e ${buscarCidades[5]}`
+console.log(cidadesAvaliadas)
+alert(`Os nomes das cidades avaliadas são: ${cidadesAvaliadas}.`)
 
 
-//Exibe o texto do Roteiro A que acaba no início do Roteiro B
-let textoRoteiroA = conteudoClean.substring(posicaoRoteiroA, posicaoRoteiroB)
-console.log(textoRoteiroA)
-
-
-
-
-// //Localiza quantos Roteiros A existem no texto
-// let buscarRoteiroA = conteudoClean.match(/#Roteiro A/gi)
-// console.log(buscarRoteiroA)
-// console.log(buscarRoteiroA.length)
-// console.log(buscarRoteiroA[1])
+//2 - O conteúdo do Roteiro A de cada cidade avaliada.
+let buscarRoteiroA = conteudoClean.split("#")
+console.table(buscarRoteiroA)
+let RoteirosA = `SÃO PAULO: ${buscarRoteiroA[1]}. LAS VEGAS: ${buscarRoteiroA[4]}. MOSCOU: ${buscarRoteiroA[7]}.`
+alert(RoteirosA)
